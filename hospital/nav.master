@@ -1,0 +1,111 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="nav.master.cs" Inherits="nav" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>SearchIn</title>
+    <link href="Content/bootswatch/flatly/bootstrap.min.css" rel="stylesheet" />
+    <link href="Style.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+     <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <style>
+      .navbar-brand  #logo{
+          margin-top : 0;
+          padding-top : 0;
+            padding-bottom :10px;
+        }
+    </style>
+    <script>
+$(document).ready(function () {
+$("#open").click(function (event) {
+$('#myModal').modal('show');
+})
+});
+</script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">toggle navigation</span>Menu<i class="fa fa-bars fa-inverse fa-spin"></i>
+                    </button>
+                    <a class="navbar-brand" href="Default.aspx"><asp:Image ID="logo" runat="server" ImageUrl="~/img/searchin.png" Height="40" Width="40" /></a>
+                    <a class="navbar-brand" href="Default.aspx">SearchIn</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Emergency<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="ambulance.aspx">Ambulance</a></li>
+                                <li><a href="blood.aspx">Blood Bank</a></li>
+                                <li><a href="Lab.aspx"  >Laboratory</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">NGO/TRUST</a></li>
+                        <li><a href="#">Read Articles</a></li>
+                        <li><a href="#">Appointments</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login/SignUp<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#myModal" id="open">LogIn</a></li>
+                                <li><a href="signup.aspx">SignUp</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content ">
+                    <center>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2 class="modal-title" id="myModal-label">Login to your account</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group input-group-lg col-lg-8">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user-o fa-1x"></i>
+                                </span>
+                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control">username</asp:TextBox>
+			            </div><br />
+                        <div class="input-group input-group-lg col-lg-8">
+                            <span class="input-group-addon">
+                                <i class="fa fa-lock fa-1x"></i>
+                                </span>
+                            <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" TextMode="Password">password</asp:TextBox>
+			            </div><br />
+                        <div class="input-group col-sm-offset-1">
+                            <asp:Button ID="Button1" runat="server" Text="Login" CssClass="btn btn-lg btn-success" OnClick="Button1_Click" />
+                        </div>
+                    </div></center>
+                    <div class="modal-footer">
+                        <small>New to Website ? </small><asp:Button ID="Button2" runat="server" Text="Register" CssClass="btn  btn-primary btn-sm"  PostBackUrl="~/signup.aspx"/>     
+                    </div>
+                </div>
+            </div><!--modal dialog-->
+        </div>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+   
+</body>
+</html>
